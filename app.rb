@@ -11,7 +11,7 @@ get '/' do
   slim :form
 end
 
-get '/index' do
+post '/index' do
   movies = RestClient.get "http://www.omdbapi.com/?s=#{(params['title']).gsub(" ","+")}&y=#{params['year']}"
   @movies = JSON.parse(movies.body)
 

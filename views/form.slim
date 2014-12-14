@@ -1,7 +1,7 @@
 h3 Search by Title
 = flash[:notice] if flash[:notice]
 
-form action="/index" method="get"
+form action="/index" method="post"
   input type="text" name="title" placeholder="Title"
   input type="text" name="year" placeholder="Year"
   input type="submit" value="Search"
