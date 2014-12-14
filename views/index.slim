@@ -1,7 +1,18 @@
 h3 Search Results
 a href="/" back
 
-- @movies["Search"].each do |movie|
-  p
-    a href="/title/#{movie["imdbID"]}" = movie["Title"]
-end
+table
+  thead
+    tr
+      th
+        | Title
+      th
+        | Year
+  - @movies["Search"].each do |movie|
+    tbody
+      tr
+        td
+          a href="/title/#{movie["imdbID"]}" = movie["Title"]
+        td
+          = movie["Year"]
+  end
