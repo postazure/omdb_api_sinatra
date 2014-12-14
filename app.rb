@@ -12,12 +12,13 @@ get '/' do
 end
 
 get '/index' do
-  if (params['title']).length <= 1
-    flash[:notice] = "Search string must be atleast 2 characters."
+  movies = RestClient.get "http://www.omdbapi.com/?s=#{(params['title']).gsub(" ","+")}&y=#{params['year']}"
+  @movies = JSON.parse(movies.body)
+
+  if params['title'].length <= 1
+    flash[:notice] = "Title is to short to search!"
     redirect '/'
   else
-    movies = RestClient.get "http://www.omdbapi.com/?s=#{(params['title']).gsub(" ","+")}"
-    @movies = JSON.parse(movies.body)
     slim :index
   end
 end
