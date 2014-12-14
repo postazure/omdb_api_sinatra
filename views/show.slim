@@ -1,9 +1,11 @@
-h3 = @movie["Title"]
-a href="/" New Search
+header.page-header
+  h3 = @movie["Title"]
+  a href="/" class="btn btn-primary" New Search
 
 - @movie.each do |category, value|
-    p
-      strong = category
-      | :
-      = value
+  p
+    strong
+      = category
+      |: 
+    = value
 end

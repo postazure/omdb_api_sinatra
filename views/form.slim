@@ -1,7 +1,12 @@
 h3 Search by Title
-= flash[:notice] if flash[:notice]
+- if flash[:notice]
+  .alert.alert-danger
+    = flash[:notice]
+end
 
 form action="/index" method="post"
-  input type="text" name="title" placeholder="Title"
-  input type="text" name="year" placeholder="Year"
-  input type="submit" value="Search"
+  .form-group
+    input type="text" name="title" placeholder="Title" class="form-control"
+  .form-group
+    input type="text" name="year" placeholder="Year" class="form-control"
+  input type="submit" value="Search" class="btn btn-primary"
