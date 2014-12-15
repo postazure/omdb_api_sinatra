@@ -6,6 +6,7 @@ row
     img src="#{@movie["Poster"]}"
   .col-md-8
     - @movie.each do |category, value|
+      - next if category == "Poster" || category == "Response"
       p
         strong
           = "#{category}: "
