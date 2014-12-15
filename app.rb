@@ -11,11 +11,14 @@ get '/' do
   slim :form
 end
 
-post '/index' do
+get '/index' do
   movies = RestClient.get "http://www.omdbapi.com/?s=#{(params['title']).gsub(" ","+")}&y=#{params['year']}"
   @movies = JSON.parse(movies.body)
 
-  if params['title'].length <= 1
+  if @movies["Error"] == "Movie not found!"
+    flash[:notice] = "No Results"
+    redirect '/'
+  elsif params['title'].length <= 1
     flash[:notice] = "Title is to short to search!"
     redirect '/'
   else
