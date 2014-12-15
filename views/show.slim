@@ -1,11 +1,13 @@
 header.page-header
+  a href="/" class="btn btn-primary pull-right" New Search
   h3 = @movie["Title"]
-  a href="/" class="btn btn-primary" New Search
-
-- @movie.each do |category, value|
-  p
-    strong
-      = category
-      |: 
-    = value
-end
+row
+  .col-md-4
+    img src="#{@movie["Poster"]}"
+  .col-md-8
+    - @movie.each do |category, value|
+      p
+        strong
+          = "#{category}: "
+        = value
+    end
