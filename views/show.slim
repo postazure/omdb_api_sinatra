@@ -2,9 +2,9 @@ header.page-header
   a href="/" class="btn btn-primary pull-right" New Search
   h3 = @movie["Title"]
 row
-  .col-md-4
+  div class="col-md-4"
     img src="#{@movie["Poster"]}"
-  .col-md-8
+  div class="col-md-8"
     - @movie.each do |category, value|
       - next if category == "Poster" || category == "Response"
       p
